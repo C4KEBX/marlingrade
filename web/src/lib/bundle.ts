@@ -37,7 +37,7 @@ let _zips: Promise<ZipRecord[]> | null = null;
 let _grades: Promise<GradeCutoffs> | null = null;
 const _parcels = new Map<string, Promise<ParcelRecord[]>>();
 
-export function _resetCache() { _zips = null; _grades = null; _parcels.clear(); }
+export function _resetCache() { _zips = null; _grades = null; _parcels.clear(); _allParcels = null; }
 
 async function getJson<T>(path: string): Promise<T> {
   const r = await fetch(path);
@@ -50,6 +50,14 @@ export function loadGrades() { return (_grades ??= getJson<GradeCutoffs>(`${BASE
 export function loadParcels(zip: string) {
   if (!_parcels.has(zip)) _parcels.set(zip, getJson<ParcelRecord[]>(`${BASE}/parcels-${zip}.json`));
   return _parcels.get(zip)!;
+}
+
+const ALL_ZIPS = ["78749", "78748", "78745", "78739", "78735", "78736", "78652"] as const;
+let _allParcels: Promise<(ParcelRecord & { zip: string })[]> | null = null;
+export function loadAllParcels(): Promise<(ParcelRecord & { zip: string })[]> {
+  return (_allParcels ??= Promise.all(
+    ALL_ZIPS.map((z) => loadParcels(z).then((ps) => ps.map((p) => ({ ...p, zip: z })))),
+  ).then((groups) => groups.flat()));
 }
 
 export function useBundle(zip: string) {

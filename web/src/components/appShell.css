@@ -24,29 +24,16 @@
   flex: none;
 }
 
-/* Search occupies the centre of the header. Task 17 swaps the stub input for
-   a real component; both the stub `.globalsearch` and a future `.shell__search`
-   wrapper get the same centring treatment. */
-.shell__search,
-.shell__header > .globalsearch {
+/* Search occupies the centre of the header. Task 17's GlobalAddressSearch
+   renders its own `.shell__search` wrapper as root; this rule centres it and
+   provides the positioning context for the absolutely-placed results dropdown.
+   Input + dropdown chrome lives in globalAddressSearch.css. */
+.shell__search {
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
 }
-
-.globalsearch {
-  width: 100%;
-  max-width: 420px;
-  height: calc(var(--space) * 8);
-  padding: 0 calc(var(--space) * 3);
-  border: 1px solid var(--hairline);
-  border-radius: var(--r-ctl);
-  background: var(--surface-2);
-  color: var(--ice);
-  font: inherit;
-}
-
-.globalsearch::placeholder { color: var(--slate); }
 
 /* ---- Sidebar --------------------------------------------------------------- */
 .sidebar {

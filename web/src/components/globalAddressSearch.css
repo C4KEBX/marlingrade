@@ -1,0 +1,71 @@
+/* GlobalAddressSearch — sticky-header address typeahead.
+   .shell__search (flex centring + position: relative) is owned by appShell.css;
+   this file only styles the input chrome and the results dropdown.
+   Motion stays on color / background / box-shadow — no layout-bound properties. */
+
+.globalsearch {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  color: var(--ice);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  font: inherit;
+  transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+}
+
+.globalsearch::placeholder { color: var(--slate); }
+
+.globalsearch:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+}
+
+.globalsearch__results {
+  position: absolute;
+  top: calc(100% + var(--space));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 420px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+}
+
+.globalsearch__results li { display: block; }
+
+.globalsearch__results button {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--space) * 3);
+  width: 100%;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border: 0;
+  background: transparent;
+  color: var(--ice);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+
+.globalsearch__results button:hover,
+.globalsearch__results button:focus,
+.globalsearch__results button.is-active {
+  background: var(--surface-2);
+}
+
+.globalsearch__zip {
+  flex: none;
+  color: var(--slate);
+}
