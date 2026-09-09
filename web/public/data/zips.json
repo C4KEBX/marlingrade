@@ -11,23 +11,23 @@
     "sfr_count": 10423,
     "distribution": {
       "A": {
-        "count": 107,
-        "pct": 1.0
+        "count": 439,
+        "pct": 4.2
       },
       "B": {
-        "count": 1374,
-        "pct": 13.2
+        "count": 2061,
+        "pct": 19.8
       },
       "C": {
-        "count": 2227,
-        "pct": 21.4
+        "count": 1208,
+        "pct": 11.6
       },
       "D": {
-        "count": 1505,
+        "count": 1503,
         "pct": 14.4
       },
       "F": {
-        "count": 5210,
+        "count": 5212,
         "pct": 50.0
       }
     },
@@ -51,23 +51,23 @@
     "sfr_count": 15544,
     "distribution": {
       "A": {
-        "count": 148,
-        "pct": 1.0
+        "count": 430,
+        "pct": 2.8
       },
       "B": {
-        "count": 1240,
-        "pct": 8.0
+        "count": 1997,
+        "pct": 12.8
       },
       "C": {
-        "count": 2594,
-        "pct": 16.7
+        "count": 1555,
+        "pct": 10.0
       },
       "D": {
-        "count": 2226,
-        "pct": 14.3
+        "count": 2213,
+        "pct": 14.2
       },
       "F": {
-        "count": 9336,
+        "count": 9349,
         "pct": 60.1
       }
     },
@@ -91,24 +91,24 @@
     "sfr_count": 15886,
     "distribution": {
       "A": {
-        "count": 565,
-        "pct": 3.6
+        "count": 1061,
+        "pct": 6.7
       },
       "B": {
-        "count": 1665,
-        "pct": 10.5
+        "count": 2350,
+        "pct": 14.8
       },
       "C": {
-        "count": 2686,
-        "pct": 16.9
+        "count": 1505,
+        "pct": 9.5
       },
       "D": {
-        "count": 1796,
+        "count": 1791,
         "pct": 11.3
       },
       "F": {
-        "count": 9174,
-        "pct": 57.7
+        "count": 9179,
+        "pct": 57.8
       }
     },
     "aggregates": {
@@ -131,23 +131,23 @@
     "sfr_count": 6683,
     "distribution": {
       "A": {
-        "count": 24,
-        "pct": 0.4
+        "count": 174,
+        "pct": 2.6
       },
       "B": {
-        "count": 570,
-        "pct": 8.5
+        "count": 795,
+        "pct": 11.9
       },
       "C": {
-        "count": 1195,
-        "pct": 17.9
+        "count": 820,
+        "pct": 12.3
       },
       "D": {
-        "count": 1258,
+        "count": 1257,
         "pct": 18.8
       },
       "F": {
-        "count": 3636,
+        "count": 3637,
         "pct": 54.4
       }
     },
@@ -171,16 +171,16 @@
     "sfr_count": 4383,
     "distribution": {
       "A": {
-        "count": 50,
-        "pct": 1.1
+        "count": 132,
+        "pct": 3.0
       },
       "B": {
-        "count": 390,
-        "pct": 8.9
+        "count": 630,
+        "pct": 14.4
       },
       "C": {
-        "count": 722,
-        "pct": 16.5
+        "count": 400,
+        "pct": 9.1
       },
       "D": {
         "count": 655,
@@ -211,16 +211,16 @@
     "sfr_count": 2876,
     "distribution": {
       "A": {
-        "count": 96,
-        "pct": 3.3
+        "count": 218,
+        "pct": 7.6
       },
       "B": {
-        "count": 385,
-        "pct": 13.4
+        "count": 487,
+        "pct": 16.9
       },
       "C": {
-        "count": 475,
-        "pct": 16.5
+        "count": 251,
+        "pct": 8.7
       },
       "D": {
         "count": 384,
@@ -251,16 +251,16 @@
     "sfr_count": 1830,
     "distribution": {
       "A": {
-        "count": 64,
-        "pct": 3.5
+        "count": 112,
+        "pct": 6.1
       },
       "B": {
-        "count": 152,
-        "pct": 8.3
-      },
-      "C": {
         "count": 194,
         "pct": 10.6
+      },
+      "C": {
+        "count": 104,
+        "pct": 5.7
       },
       "D": {
         "count": 189,
