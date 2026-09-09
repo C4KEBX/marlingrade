@@ -1,0 +1,100 @@
+/* GradeGauge — signature circular grade gauge.
+   The cyan score ring animates from 0 on mount via an inline stroke-dasharray
+   transition timed by --dur-2. Reduced motion needs no rule here: the tokens'
+   @media (prefers-reduced-motion: reduce) already collapses --dur-2 to 0ms.
+   No layout-bound properties are transitioned. */
+
+.gauge {
+  position: relative;
+  display: inline-block;
+}
+
+.gauge--lg {
+  width: 240px;
+  height: 240px;
+}
+
+.gauge--sm {
+  width: 96px;
+  height: 96px;
+}
+
+.gauge__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gauge__track {
+  stroke: var(--hairline);
+  fill: none;
+  stroke-width: 10;
+}
+
+.gauge__arc {
+  stroke: var(--cyan);
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+/* ---- Centred stack ---------------------------------------------------- */
+.gauge__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gauge__letter {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+}
+
+.gauge--sm .gauge__letter {
+  font-size: 28px;
+}
+
+.gauge__score {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  color: var(--slate);
+}
+
+.gauge--sm .gauge__score {
+  font-size: var(--label);
+}
+
+/* ---- Driver flags --------------------------------------------------- */
+.gauge__flags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: calc(var(--space) * 2);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space));
+  text-align: center;
+}
+
+.gauge__flags li {
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  color: var(--slate);
+  letter-spacing: 0.12em;
+}
+
+/* ---- Grade-colour system (spec §6.2) -------------------------------- */
+/* Flash cyan for A/B, recede for C–F. */
+.gauge--a .gauge__letter { color: var(--cyan); }
+.gauge--b .gauge__letter { color: var(--grade-b); }
+.gauge--c .gauge__letter { color: var(--grade-c); }
+.gauge--d .gauge__letter { color: var(--grade-d); }
+.gauge--f .gauge__letter { color: var(--grade-f); }
+
+/* Only an A grade earns the glow. */
+.gauge--a { filter: drop-shadow(0 0 6px rgba(0, 240, 255, .5)); }
