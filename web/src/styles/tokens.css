@@ -1,0 +1,36 @@
+:root {
+  color-scheme: dark;
+  --abyssal:   #0B111E;
+  --surface-1: #111828;
+  --surface-2: #0E1523;
+  --ice:       #F1F5F9;
+  --cyan:      #00F0FF;   /* Signal Cyan — interactive, A-grade, gauge ring */
+  --green:     #00E676;   /* Data Green — export/CSV & revenue ONLY */
+  --slate:     #64748B;
+  --hairline:  rgba(241,245,249,0.10);
+
+  --grade-a: #00F0FF;
+  --grade-b: #3FD9E4;
+  --grade-c: #64748B;
+  --grade-d: #4C596B;
+  --grade-f: #3A4453;
+
+  --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-ui:   'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --step-0: 13px; --step-1: 14px; --step-2: 18px; --step-3: 24px;
+  --hero: clamp(2.5rem, 6vw, 4.25rem);
+  --label: 10px;
+
+  --r-ctl: 4px; --r-card: 8px;
+  --space: 4px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 150ms; --dur-2: 250ms;
+
+  --sidebar-w: 208px;
+  --header-h: 60px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: 0ms; --dur-2: 0ms; }
+}

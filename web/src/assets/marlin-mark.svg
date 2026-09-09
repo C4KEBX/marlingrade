@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Marlin">
+  <defs>
+    <linearGradient id="marlinFin" x1="12" y1="6" x2="52" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00F0FF" />
+      <stop offset="1" stop-color="#1E90C8" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#marlinFin)"
+    d="M15 27 C26 18 35 10 51 6 C47 15 44 21 43 27 C34 24 24 24 15 27 Z
+       M8 56 L15 56 L19 44 L12 44 Z
+       M22 56 L30 56 L34 36 L26 36 Z
+       M37 56 L45 56 L49 27 L41 27 Z"
+  />
+</svg>
