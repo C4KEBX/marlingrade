@@ -1,0 +1,53 @@
+# Likely-lister score weights (spec §5.5). Tunable — these are the v1 defaults from the spec table.
+#
+# Rental-scoring correction (this session): a landlord earning steady rental
+# income is financially set up and less motivated to sell than an owner-occupant
+# -- real-estate-agent feedback, confirmed against real Park West At Circle C
+# output. likely_rental flips from +10 to -20; absentee drops to 0 standalone
+# (it still feeds likely_rental's definition, just no longer scores on its own).
+
+weights:
+  tenure_years_9plus: 25
+  tenure_years_15plus_additional: 10
+  # +1 point per whole year of tenure past 15yrs (floor), uncapped except by the
+  # final 0-100 score clip. Fixes score clustering where every long-tenured home
+  # tied at the same flat total regardless of whether tenure was 15 or 30 years.
+  # Applies to all homes past the threshold, not just senior-exempt ones.
+  tenure_bonus_per_year: 1
+  absentee: 0
+  out_of_state_additional: 10
+  likely_rental: -20
+  # Tired-landlord carve-out (competitor-gap spec, 2026-08-10, revised same
+  # day per operator decision): PropStream markets a "tired landlord" list
+  # defined as rental-owned 15+ years, treating long tenure as a *positive*
+  # motivation signal (repairs, tenant turnover, and regulation fatigue
+  # accumulate) -- applied INSTEAD of likely_rental (not stacked on top of
+  # it) once tenure_years >= 15. Operator reviewed the original conservative
+  # -5 default and chose to flip it positive rather than merely reduce the
+  # penalty, matching PropStream's framing directly. Still a v1 default, not
+  # a validated weight -- the parent spec (docs/superpowers/specs/2026-08-10-
+  # competitor-gap-signals.md, Part 4) requires a real correlation check
+  # before this is truly final; real population in the one farm tested so
+  # far is thin (n=2), so treat this as directional until more data loads.
+  # tenure_years missing (NaN) is treated as short-tenure (falls through to
+  # the likely_rental line above), not long-tenure -- never grant this bonus
+  # based on an owner whose tenure we don't actually know.
+  likely_rental_long_tenure: 5
+  senior_longtenure: 15
+  # Requires >=2 roll years loaded (spec §5.3/§5.6) -- contributes 0 until then,
+  # since homestead_dropped itself stays NULL in single-roll-year mode.
+  homestead_dropped: 25
+  # New this session (scoring signal expansion spec, 2026-07-31): both diff off
+  # the prior roll year (requires 2+ roll years loaded via `farmsignal ingest`;
+  # contributes 0 until then, same degradation as homestead_dropped).
+  over65_newly_filed: 15   # owner just qualified for Over-65 -- predicts a multi-year downsizing window, not an immediate sale
+  ag_exemption_rollback: 20  # land left ag/wildlife special-use appraisal (D1) -- often precedes development or sale
+  owner_is_entity: -10
+  # New this session -- see FarmSignal_AI_Handoff_Document.docx research + operator sign-off.
+  recent_sale: -25             # jan1-owner-name diff: bought this roll year, unlikely to sell again immediately
+  recent_permit_activity: -15  # major permit (addition/pool/remodel) in the last ~2 years -- just invested
+  tax_delinquent: 20           # Travis Tax Office bulk CSV -- financial distress, motivation to sell
+
+bands:
+  hot_min: 55
+  warm_min: 35
