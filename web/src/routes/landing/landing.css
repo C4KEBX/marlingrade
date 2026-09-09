@@ -1,0 +1,376 @@
+/* Screen 1 — Landing. Editorial marketing page, outside AppShell.
+   Tokens only. No --green (export-only). Only transform / opacity / color /
+   background / border-color transitions. */
+
+.lp {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 6) calc(var(--space) * 6)
+    calc(var(--space) * 20);
+}
+
+/* ---- Top nav ------------------------------------------------------- */
+.lp__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 4);
+  padding: calc(var(--space) * 3) 0;
+}
+
+.lp__brand {
+  display: inline-flex;
+}
+
+.lp__wordmark {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.lp__nav-links {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 5);
+}
+
+.lp__nav-links a {
+  color: var(--ice);
+  font-size: var(--step-1);
+}
+
+.lp__nav-links a[href="#pricing"] {
+  transition: color var(--dur-1) var(--ease);
+}
+
+.lp__nav-links a[href="#pricing"]:hover {
+  color: var(--cyan);
+}
+
+/* ---- Buttons ---------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 5);
+  border-radius: var(--r-ctl);
+  border: 1px solid transparent;
+  font-family: var(--font-ui);
+  font-size: var(--step-1);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--dur-1) var(--ease),
+    background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease);
+}
+
+.btn--cta {
+  background: var(--cyan);
+  color: var(--abyssal);
+}
+
+.btn--cta:hover {
+  transform: translateY(-1px);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--hairline);
+  color: var(--ice);
+  font-weight: 600;
+}
+
+.btn--ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* ---- Hero ---------------------------------------------------------- */
+.lp__hero {
+  padding: calc(var(--space) * 28) 0 calc(var(--space) * 20);
+}
+
+.lp__hero h1 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: var(--hero);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ice);
+}
+
+.lp__hero-accent {
+  display: block;
+  color: var(--cyan);
+}
+
+.lp__hero-sub {
+  max-width: 62ch;
+  margin: calc(var(--space) * 7) 0 0;
+  font-size: var(--step-2);
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+.lp__hero-cta {
+  margin-top: calc(var(--space) * 8);
+}
+
+.lp__hero-hook {
+  max-width: 60ch;
+  margin: calc(var(--space) * 8) 0 0;
+  padding-left: calc(var(--space) * 4);
+  border-left: 2px solid var(--hairline);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+/* ---- How it works (boxless) ------------------------------------------- */
+.lp__how {
+  padding: calc(var(--space) * 6) 0;
+}
+
+.lp__how h2,
+.lp__pricing h2 {
+  margin: calc(var(--space) * 2) 0 0;
+  font-size: var(--step-3);
+  color: var(--ice);
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 6);
+  margin-top: calc(var(--space) * 10);
+}
+
+.step {
+  position: relative;
+  flex: 1 1 220px;
+  padding: calc(var(--space) * 2) calc(var(--space) * 2) calc(var(--space) * 2)
+    0;
+}
+
+.step__num {
+  display: block;
+  font-size: var(--step-2);
+  color: var(--cyan);
+}
+
+.step__title {
+  margin: calc(var(--space) * 3) 0 calc(var(--space) * 2);
+  font-size: var(--step-2);
+  color: var(--ice);
+}
+
+.step__copy {
+  margin: 0;
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+/* arrow connectors BETWEEN steps only */
+.step + .step::before {
+  content: "\2192";
+  position: absolute;
+  top: calc(var(--space) * 2);
+  left: calc(var(--space) * -4);
+  color: var(--slate);
+  font-family: var(--font-mono);
+}
+
+/* ---- Divider ----------------------------------------------------------- */
+.section-divider {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: calc(var(--space) * 20) 0;
+}
+
+/* ---- Pricing --------------------------------------------------------- */
+.lp__pricing {
+  padding: calc(var(--space) * 4) 0;
+}
+
+.lp__pricing-sub {
+  max-width: 64ch;
+  margin: calc(var(--space) * 4) 0 calc(var(--space) * 10);
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+.plans__scroll {
+  overflow-x: auto;
+}
+
+.plans {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.plans__col-feature {
+  background: var(--surface-2);
+}
+
+.plans__corner {
+  text-align: left;
+  vertical-align: bottom;
+  padding: calc(var(--space) * 3) calc(var(--space) * 3) calc(var(--space) * 5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.plans__logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.plans__head {
+  vertical-align: top;
+  padding: calc(var(--space) * 3) calc(var(--space) * 3) calc(var(--space) * 5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.plans__head > * {
+  display: block;
+}
+
+.plans__head--feature {
+  background: var(--surface-2);
+  border-top: 2px solid var(--cyan);
+}
+
+.plans__pop {
+  margin: 0 auto calc(var(--space) * 2);
+  padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
+  width: max-content;
+  border: 1px solid var(--cyan);
+  border-radius: 999px;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plans__name {
+  font-size: var(--step-2);
+  color: var(--ice);
+}
+
+.plans__price {
+  margin-top: calc(var(--space));
+  font-size: var(--step-1);
+  color: var(--cyan);
+}
+
+.plans__desc {
+  margin: calc(var(--space) * 2) 0 calc(var(--space) * 4);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.plans__head .btn--cta {
+  display: flex;
+  width: 100%;
+  margin-top: calc(var(--space) * 2);
+}
+
+.plans .grp td {
+  text-align: left;
+  padding: calc(var(--space) * 3) calc(var(--space) * 3);
+  background: var(--surface-1);
+  color: var(--slate);
+}
+
+.plans__rowlabel {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ice);
+}
+
+.plans__rowlabel,
+.plans__cell {
+  padding: calc(var(--space) * 3) calc(var(--space) * 3);
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--step-0);
+  line-height: 1.45;
+  vertical-align: top;
+}
+
+.plans__cell {
+  color: var(--ice);
+}
+
+.plans__cell--yes {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.plans__cell--no {
+  color: var(--slate);
+}
+
+/* ---- Wedge ---------------------------------------------------------- */
+.lp__wedge {
+  max-width: 60ch;
+  margin: calc(var(--space) * 8) auto 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+/* ---- Footer ------------------------------------------------------------ */
+.lp__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space) * 4);
+  margin-top: calc(var(--space) * 24);
+  padding-top: calc(var(--space) * 6);
+  border-top: 1px solid var(--hairline);
+}
+
+.lp__footer .lp__wordmark {
+  height: 20px;
+  opacity: 0.7;
+}
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 760px) {
+  .lp {
+    padding: calc(var(--space) * 4) calc(var(--space) * 4)
+      calc(var(--space) * 16);
+  }
+
+  .lp__hero {
+    padding: calc(var(--space) * 16) 0 calc(var(--space) * 12);
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: calc(var(--space) * 8);
+  }
+
+  .step {
+    padding: 0;
+  }
+
+  .step + .step::before {
+    content: "\2193";
+    top: calc(var(--space) * -6);
+    left: 0;
+  }
+
+  .section-divider {
+    margin: calc(var(--space) * 12) 0;
+  }
+}
