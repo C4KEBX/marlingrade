@@ -1,0 +1,57 @@
+/* FilterChips — toggle chip row. Active chip flips to cyan border/text.
+   Only compositor-friendly properties transition. */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+}
+
+.chips__group-label {
+  margin-right: calc(var(--space));
+}
+
+.chips__sep {
+  width: 1px;
+  align-self: stretch;
+  margin: calc(var(--space)) calc(var(--space) * 2);
+  background: var(--hairline);
+}
+
+.chip {
+  padding: calc(var(--space) * 1.5) calc(var(--space) * 3);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease),
+    background-color var(--dur-1) var(--ease);
+}
+
+.chip--grade {
+  min-width: 30px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-align: center;
+}
+
+.chip:hover {
+  color: var(--ice);
+  border-color: rgba(241, 245, 249, 0.24);
+}
+
+.chip--on {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}

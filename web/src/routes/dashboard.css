@@ -1,0 +1,94 @@
+/* Screen 4 — zip dashboard. Tokens only. The single sanctioned width transition
+   lives in distributionBar.css; nothing here animates a layout-bound property. */
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 6);
+  max-width: 1120px;
+}
+
+/* ---- Header --------------------------------------------------------- */
+.dash__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--space) * 4);
+  flex-wrap: wrap;
+}
+
+.dash__head h1 {
+  margin: 0 0 calc(var(--space) * 2);
+  font-size: var(--step-3);
+}
+
+.dash__head .label {
+  margin: 0;
+}
+
+.dash__badges {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: calc(var(--space)) calc(var(--space) * 2.5);
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  background: var(--surface-2);
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badge--exc {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* ---- Stats grid --------------------------------------------------- */
+.dash__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--space) * 5);
+  align-items: start;
+}
+
+@media (min-width: 800px) {
+  .dash__stats {
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  }
+}
+
+/* ---- Export button ---------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) * 1.5);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3.5);
+  border: 0;
+  border-radius: var(--r-ctl);
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  cursor: pointer;
+  transition: filter var(--dur-1) var(--ease);
+}
+
+.btn--export {
+  background: var(--green);
+  color: #062b18;
+  font-weight: 700;
+}
+
+.btn--export:hover {
+  filter: brightness(1.08);
+}
+
+.btn--export:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}

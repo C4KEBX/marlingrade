@@ -1,0 +1,92 @@
+/* ProspectTable — sortable prospect list. Hover + focus are the only motion;
+   no layout-bound transitions. */
+
+.ptable__wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ptable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step-1);
+}
+
+.ptable thead {
+  background: var(--surface-1);
+}
+
+.ptable th {
+  text-align: left;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  border-bottom: 1px solid var(--hairline);
+  font-size: var(--label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.ptable__sort {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.ptable__sort:hover {
+  color: var(--cyan);
+}
+
+.ptable__sort:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.ptable td {
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 3);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.ptable__row {
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease);
+}
+
+.ptable__row:hover {
+  background: var(--surface-2);
+}
+
+.ptable__row:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: -2px;
+}
+
+.ptable__rank {
+  color: var(--slate);
+  width: 1%;
+}
+
+.ptable__owner {
+  color: var(--slate);
+  text-transform: capitalize;
+}
+
+.ptable__score {
+  color: var(--ice);
+}
+
+.ptable__empty {
+  text-align: center;
+  color: var(--slate);
+  padding: calc(var(--space) * 8) calc(var(--space) * 3);
+}
+
+.ptable__note {
+  margin: calc(var(--space) * 3) 0 0;
+}

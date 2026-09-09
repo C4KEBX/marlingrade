@@ -1,0 +1,38 @@
+/* GradePill — per spec §6.2: flash cyan for A/B, recede for C–F.
+   No layout-bound transitions. */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 calc(var(--space) * 1.5);
+  border-radius: var(--r-ctl);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: var(--step-0);
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+/* A / B — cyan-tinted surface + glow */
+.pill--a {
+  background: rgba(0, 240, 255, 0.14);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: var(--cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.28);
+}
+.pill--b {
+  background: rgba(63, 217, 228, 0.12);
+  border-color: rgba(63, 217, 228, 0.32);
+  color: var(--grade-b);
+}
+
+/* C–F — muted, recede */
+.pill--c,
+.pill--d,
+.pill--f {
+  background: var(--surface-2);
+  color: var(--slate);
+}

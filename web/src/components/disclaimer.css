@@ -1,0 +1,30 @@
+/* Disclaimer — legal footnote. Two variants:
+   compact = inline footnote at label size; full = bordered callout with kicker. */
+
+.disclaimer {
+  margin: 0;
+}
+
+.disclaimer--compact {
+  font-size: var(--label);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+}
+
+.disclaimer--full {
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  padding: calc(var(--space) * 4);
+  color: var(--slate);
+}
+
+.disclaimer__kicker {
+  margin: 0 0 calc(var(--space) * 2);
+}
+
+.disclaimer__body {
+  margin: 0;
+  font-size: var(--step-0);
+  line-height: 1.6;
+}

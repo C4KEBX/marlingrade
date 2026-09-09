@@ -1,0 +1,59 @@
+/* DistributionBar — the one sanctioned width transition in the app (spec: the
+   grade-split bar grows into place). Reduced-motion collapses --dur-2 to 0ms
+   via the tokens' media query, so no extra rule is needed here. */
+
+.distbar {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 3);
+}
+
+.distbar__track {
+  display: flex;
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.distbar__seg {
+  height: 100%;
+  transition: width var(--dur-2) var(--ease);
+}
+
+.distbar__seg--a { background: var(--grade-a); }
+.distbar__seg--b { background: var(--grade-b); }
+.distbar__seg--c { background: var(--grade-c); }
+.distbar__seg--d { background: var(--grade-d); }
+.distbar__seg--f { background: var(--grade-f); }
+
+.distbar__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 4);
+  font-size: var(--label);
+  letter-spacing: 0.1em;
+  color: var(--slate);
+}
+
+.distbar__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space) * 1.5);
+}
+
+.distbar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.distbar__dot--a { background: var(--grade-a); }
+.distbar__dot--b { background: var(--grade-b); }
+.distbar__dot--c { background: var(--grade-c); }
+.distbar__dot--d { background: var(--grade-d); }
+.distbar__dot--f { background: var(--grade-f); }
