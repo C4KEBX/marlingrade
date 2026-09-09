@@ -32,12 +32,36 @@ export interface ZipRecord {
 }
 export type GradeCutoffs = { cutoffs: [string, string][] };
 
+export interface AlertRow {
+  id: string;
+  kind: "computed_spike" | "legal_trigger";
+  from_grade: string;
+  to_grade: string;
+  address: string;
+  situs_norm: string;
+  zip: string;
+  headline: string;
+  detail: string;
+  age: string;
+  worked: boolean;
+}
+export interface ReportMover { address: string; situs_norm: string; grade: string; note: string; }
+export interface MonthlyReportData {
+  cycle: string;
+  movers: { new_ab: ReportMover[]; warming: ReportMover[]; cooled: ReportMover[] };
+}
+
 const BASE = `${import.meta.env.BASE_URL}data`;
 let _zips: Promise<ZipRecord[]> | null = null;
 let _grades: Promise<GradeCutoffs> | null = null;
 const _parcels = new Map<string, Promise<ParcelRecord[]>>();
+let _alerts: Promise<AlertRow[]> | null = null;
+const _reports = new Map<string, Promise<MonthlyReportData>>();
 
-export function _resetCache() { _zips = null; _grades = null; _parcels.clear(); _allParcels = null; }
+export function _resetCache() {
+  _zips = null; _grades = null; _parcels.clear(); _allParcels = null;
+  _alerts = null; _reports.clear();
+}
 
 async function getJson<T>(path: string): Promise<T> {
   const r = await fetch(path);
@@ -50,6 +74,11 @@ export function loadGrades() { return (_grades ??= getJson<GradeCutoffs>(`${BASE
 export function loadParcels(zip: string) {
   if (!_parcels.has(zip)) _parcels.set(zip, getJson<ParcelRecord[]>(`${BASE}/parcels-${zip}.json`));
   return _parcels.get(zip)!;
+}
+export function loadAlerts() { return (_alerts ??= getJson<AlertRow[]>(`${BASE}/alerts.json`)); }
+export function loadReport(zip: string) {
+  if (!_reports.has(zip)) _reports.set(zip, getJson<MonthlyReportData>(`${BASE}/report-${zip}.json`));
+  return _reports.get(zip)!;
 }
 
 const ALL_ZIPS = ["78749", "78748", "78745", "78739", "78735", "78736", "78652"] as const;

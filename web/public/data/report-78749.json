@@ -1,0 +1,59 @@
+{
+  "cycle": "September 2026",
+  "movers": {
+    "new_ab": [
+      {
+        "address": "6903 LOCH LOMMOND ST",
+        "situs_norm": "6903 LOCH LOMMOND ST",
+        "grade": "A",
+        "note": "Crossed into A after the absentee flag flipped on a 49-year homestead."
+      },
+      {
+        "address": "7105 KENOSHA PASS",
+        "situs_norm": "7105 KENOSHA PASS",
+        "grade": "A",
+        "note": "Long-tenure Convict Hill owner; exemption profile thinned this cycle."
+      },
+      {
+        "address": "7002 GREENOCK ST",
+        "situs_norm": "7002 GREENOCK ST",
+        "grade": "A",
+        "note": "Homestead exemption lapsed after 11 years — first month in the A band."
+      }
+    ],
+    "warming": [
+      {
+        "address": "6109 SUN VISTA DR",
+        "situs_norm": "6109 SUN VISTA DR",
+        "grade": "B",
+        "note": "Westcreek, 41 years owned; tenure weight keeps climbing toward A."
+      },
+      {
+        "address": "5717 MCCARTY LN",
+        "situs_norm": "5717 MCCARTY LN",
+        "grade": "B",
+        "note": "Mailing-address drift suggests the owner has moved off-site."
+      },
+      {
+        "address": "6101 MORNING DEW DR",
+        "situs_norm": "6101 MORNING DEW DR",
+        "grade": "C",
+        "note": "Approaching the 25-year tenure step that pushed neighbors into B."
+      }
+    ],
+    "cooled": [
+      {
+        "address": "6713 MELAVA CT",
+        "situs_norm": "6713 MELAVA CT",
+        "grade": "D",
+        "note": "Score held low; the foreclosure filing is tracked separately in Alerts."
+      },
+      {
+        "address": "6705 MELAVA CT",
+        "situs_norm": "6705 MELAVA CT",
+        "grade": "D",
+        "note": "Short-tenure Barstow Village rental; no exemption, no movement."
+      }
+    ]
+  }
+}

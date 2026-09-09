@@ -1,0 +1,54 @@
+[
+  {
+    "id": "al-78749-0001",
+    "kind": "legal_trigger",
+    "from_grade": "C",
+    "to_grade": "A",
+    "address": "6713 MELAVA CT",
+    "situs_norm": "6713 MELAVA CT",
+    "zip": "78749",
+    "headline": "Foreclosure notice filed — trustee sale scheduled",
+    "detail": "Substitute trustee's sale posted for the first Tuesday of next month; a lis pendens was recorded against the deed of trust this week.",
+    "age": "2 days ago",
+    "worked": false
+  },
+  {
+    "id": "al-78749-0002",
+    "kind": "computed_spike",
+    "from_grade": "B",
+    "to_grade": "A",
+    "address": "6903 LOCH LOMMOND ST",
+    "situs_norm": "6903 LOCH LOMMOND ST",
+    "zip": "78749",
+    "headline": "Owned 15+ years, now absentee (+35)",
+    "detail": "Deed shows 49 years of owner-occupancy; the 2025 mailing address now routes to a Georgetown property-management firm.",
+    "age": "5 days ago",
+    "worked": false
+  },
+  {
+    "id": "al-78749-0003",
+    "kind": "computed_spike",
+    "from_grade": "C",
+    "to_grade": "A",
+    "address": "7002 GREENOCK ST",
+    "situs_norm": "7002 GREENOCK ST",
+    "zip": "78749",
+    "headline": "Homestead exemption dropped after 11 years (+25)",
+    "detail": "Homestead exemption was not renewed for the 2025 roll after 11 years on file; the owner mailing address is unchanged.",
+    "age": "1 week ago",
+    "worked": false
+  },
+  {
+    "id": "al-78749-0004",
+    "kind": "computed_spike",
+    "from_grade": "D",
+    "to_grade": "B",
+    "address": "5415 WESTVIEW RD",
+    "situs_norm": "5415 WESTVIEW RD",
+    "zip": "78749",
+    "headline": "Out-of-state mailing address added (−10 → net +20)",
+    "detail": "Mailing address changed to a Scottsdale, AZ PO box; the homestead flag still shows, but the out-of-state penalty now applies.",
+    "age": "2 weeks ago",
+    "worked": false
+  }
+]
