@@ -113,11 +113,13 @@ def _zip_record(zip_code: str, g: pd.DataFrame) -> dict:
 
 def _parcel_record(row: pd.Series) -> dict:
     from marlin_engine.normalize.address import normalize_address
+
+    situs = row["situs_address"] if pd.notna(row["situs_address"]) else None
     return {
         "parcel_uid": f"travis-{row['parcel_id']}",
-        "situs_address": row["situs_address"],
-        "situs_norm": normalize_address(row["situs_address"] or ""),
-        "owner_name": row["owner_name"],
+        "situs_address": situs,
+        "situs_norm": normalize_address(situs or ""),
+        "owner_name": row["owner_name"] if pd.notna(row["owner_name"]) else None,
         "owner_type": "entity" if bool(row["owner_is_entity"]) else "occupant",
         "grade": row["grade"],
         "score": float(row["score"]),
@@ -127,9 +129,9 @@ def _parcel_record(row: pd.Series) -> dict:
             "tenure_years": round(float(row["tenure_years"]), 1) if pd.notna(row["tenure_years"]) else None,
             "homestead": bool(row["homestead"]),
             "over65": bool(row["over65_exempt"]),
-            "subdivision": row["subdivision_canon"],
+            "subdivision": row["subdivision_canon"] if pd.notna(row["subdivision_canon"]) else None,
             "assessed_value": int(row["assessed_value"]) if pd.notna(row["assessed_value"]) else None,
-            "mail_state": row["mail_state"],
+            "mail_state": row["mail_state"] if pd.notna(row["mail_state"]) else None,
             "out_of_state": bool(row["out_of_state"]),
         },
     }
@@ -153,9 +155,11 @@ def build(db_path: Path = _DEFAULT_DB, out_dir: Path = _DEFAULT_OUT) -> None:
         # every run and churn the committed JSON.
         ordered = g.sort_values(["score", "parcel_id"], ascending=[False, True])
         parcels = [_parcel_record(r) for _, r in ordered.iterrows()]
-        (out_dir / f"parcels-{zip_code}.json").write_text(json.dumps(parcels))
-    (out_dir / "zips.json").write_text(json.dumps(zips, indent=2))
-    (out_dir / "grades.json").write_text(json.dumps({"cutoffs": grades.cutoffs_for_display()}, indent=2))
+        (out_dir / f"parcels-{zip_code}.json").write_text(json.dumps(parcels, allow_nan=False))
+    (out_dir / "zips.json").write_text(json.dumps(zips, indent=2, allow_nan=False))
+    (out_dir / "grades.json").write_text(
+        json.dumps({"cutoffs": grades.cutoffs_for_display()}, indent=2, allow_nan=False)
+    )
 
     for fx in ("alerts.json", "report-78749.json"):
         src = _FIXTURES / fx
