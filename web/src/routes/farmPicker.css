@@ -1,0 +1,174 @@
+/* Covers Screen 2 (sign-in) + Screen 3 (Travis farm picker). Name is historical. */
+
+/* ---- Sign in ---------------------------------------------------------- */
+.signin-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--space) * 6);
+}
+
+.signin-card {
+  width: min(380px, 100%);
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  padding: calc(var(--space) * 8);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 4);
+}
+
+.signin-card img {
+  align-self: flex-start;
+}
+
+.signin-card label {
+  display: block;
+  margin-bottom: calc(var(--space) * 1.5);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.signin-card input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  color: var(--ice);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  font-family: var(--font-ui);
+  font-size: var(--step-1);
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+.signin-card input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+}
+
+.signin-note {
+  margin: 0;
+  color: var(--slate);
+  font-size: var(--step-0);
+}
+
+/* ---- Buttons (landing.css is not loaded on /signin or /farm) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  color: var(--ice);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  padding: calc(var(--space) * 2) calc(var(--space) * 4);
+  font-family: var(--font-ui);
+  font-size: var(--step-1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+
+.btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.btn--cta {
+  background: var(--cyan);
+  color: var(--abyssal);
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.btn--cta:hover {
+  color: var(--abyssal);
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+/* ---- Farm picker ---------------------------------------------------------- */
+.farmpicker-page {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 6);
+}
+
+.farmpicker-page header h1 {
+  margin: 0 0 calc(var(--space) * 2);
+}
+
+.farmpicker-page header p {
+  margin: 0;
+}
+
+.farmpicker__scroll {
+  overflow-x: auto;
+}
+
+.farmpicker {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.farmpicker th {
+  text-align: left;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.farmpicker td {
+  padding: calc(var(--space) * 3);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.farmpicker tbody tr {
+  transition: background-color var(--dur-1) var(--ease);
+}
+
+.farmpicker tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.farmpicker .is-focus {
+  background: var(--surface-2);
+  box-shadow: inset 2px 0 0 var(--cyan);
+}
+
+/* ---- Exclusivity badges ---------------------------------------------------------- */
+.fp-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: var(--label);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.fp-badge--available {
+  color: var(--warn);
+  border: 1px solid var(--warn);
+}
+
+.fp-badge--held {
+  color: var(--slate);
+  border: 1px solid var(--hairline);
+}
+
+.fp-badge--monitored {
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+}
