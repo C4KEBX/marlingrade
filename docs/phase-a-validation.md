@@ -54,3 +54,15 @@ No `marlin_engine/` module was modified. `.venv/bin/python -m pytest -q` →
   `tenure_years`, … populated for only 184/486,859 rows). Harmless — the bundle
   build recomputes everything — but any future check that reads those columns
   directly instead of running the engine will be wrong.
+
+---
+
+## Task 10 — Travis 2024 roll ingest: DEFERRED
+
+**Status:** deferred — no raw file delivered.
+
+Checked 2026-09-09: `data/raw/travis/` does not exist and `SELECT DISTINCT roll_year FROM parcels` returns `[2025]` only. The TCAD 2024 certified export is an operator deliverable that is not present, so the year-over-year ingest described in the plan's Task 10 cannot run.
+
+**Impact:** none on the demo. `scripts/build_demo_bundle.py` already runs the single-roll path (`prior=None`), so scoring, grades, the JSON bundle, and the SPA are unaffected. The three diff-based signals — `homestead_dropped`, `over65_newly_filed`, `ag_exemption_rollback` — stay inactive (they contribute 0 to every score). No parcel's grade or score depends on them in this build.
+
+**To activate later:** drop the TCAD 2024 certified export into `data/raw/travis/`, run the ingest steps from the plan's Task 10, then re-run `python -m scripts.build_demo_bundle` and re-check cutoffs (Task 8). Tasks 7–10 are already flagged provisional pending any data correction; no code is lost by deferring.
