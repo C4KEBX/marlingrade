@@ -1,0 +1,95 @@
+/* SignalTriggers — diverging bar list. Bar halves grow from a center axis:
+   negative points fill left in slate, positive fill right in cyan. Widths are
+   inline (∝ |points| / maxAbs). No layout-property transitions. */
+
+.signals {
+  margin: calc(var(--space) * 6) 0 0;
+}
+
+.signals__kicker {
+  margin: 0 0 calc(var(--space) * 3);
+}
+
+.signals__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.signals__row,
+.signals__total {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px 44px;
+  align-items: center;
+  gap: calc(var(--space) * 2);
+  padding: calc(var(--space) * 1.5) 0;
+}
+
+.signals__total {
+  margin-top: calc(var(--space) * 1);
+  border-top: 1px solid var(--hairline);
+  padding-top: calc(var(--space) * 2.5);
+}
+
+.signals__total .signals__label {
+  font-size: var(--label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.signals__label {
+  font-size: var(--step-0);
+  color: var(--ice);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signals__bar {
+  display: flex;
+  align-items: stretch;
+  height: 10px;
+}
+
+.signals__half {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.signals__half--neg {
+  justify-content: flex-end;
+}
+
+.signals__axis {
+  width: 1px;
+  background: var(--hairline);
+}
+
+.signals__fill {
+  display: block;
+  height: 100%;
+  border-radius: 1px;
+}
+
+.signals__fill--neg {
+  background: var(--slate);
+}
+
+.signals__fill--pos {
+  background: var(--cyan);
+}
+
+.signals__pts {
+  font-size: var(--step-0);
+  text-align: right;
+}
+
+.signals__pts.is-pos {
+  color: var(--cyan);
+}
+
+.signals__pts.is-neg {
+  color: var(--slate);
+}

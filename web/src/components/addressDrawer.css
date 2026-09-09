@@ -1,0 +1,86 @@
+/* AddressDrawer — right slide-out panel. Closed → translateX(100%), open → 0.
+   Only transform / opacity transition; backdrop dims the workspace. */
+
+.drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(440px, 100%);
+  background: var(--surface-1);
+  border-left: 1px solid var(--hairline);
+  transform: translateX(100%);
+  transition: transform var(--dur-2) var(--ease);
+  z-index: 40;
+}
+
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-2) var(--ease);
+  z-index: 30;
+}
+
+.drawer__backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer__body {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  padding: calc(var(--space) * 6);
+}
+
+.drawer__body > h2 {
+  margin: calc(var(--space) * 2) 0 calc(var(--space) * 1);
+  font-size: var(--step-3);
+}
+
+.drawer__close {
+  position: absolute;
+  top: calc(var(--space) * 4);
+  right: calc(var(--space) * 4);
+  width: calc(var(--space) * 8);
+  height: calc(var(--space) * 8);
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  color: var(--slate);
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease);
+}
+
+.drawer__close:hover {
+  color: var(--cyan);
+}
+
+.drawer__close:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.drawer__spark {
+  margin: calc(var(--space) * 4) 0 0;
+  padding: calc(var(--space) * 4);
+  border: 1px dashed var(--hairline);
+  border-radius: var(--r-card);
+  color: var(--slate);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .drawer {
+    width: 100%;
+  }
+}

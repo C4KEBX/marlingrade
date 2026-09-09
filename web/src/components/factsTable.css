@@ -1,0 +1,38 @@
+/* FactsTable — two-column definition list of public-record facts.
+   Labels in mono uppercase, values in mono. Tokens only. */
+
+.facts {
+  margin: calc(var(--space) * 6) 0 0;
+}
+
+.facts__kicker {
+  margin: 0 0 calc(var(--space) * 3);
+}
+
+.facts__grid {
+  margin: 0;
+}
+
+.facts__row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: calc(var(--space) * 3);
+  align-items: baseline;
+  padding: calc(var(--space) * 1.5) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.facts__row:last-child {
+  border-bottom: 0;
+}
+
+.facts__label {
+  margin: 0;
+}
+
+.facts__value {
+  margin: 0;
+  font-size: var(--step-0);
+  color: var(--ice);
+  overflow-wrap: anywhere;
+}

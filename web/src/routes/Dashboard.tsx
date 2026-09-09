@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { useBundle } from "../lib/bundle";
+import { AddressDrawer } from "../components/AddressDrawer";
 import { DistributionBar } from "../components/DistributionBar";
 import { AggregatePanel } from "../components/AggregatePanel";
 import { FilterChips, applyFilters, type FilterState } from "../components/FilterChips";
@@ -14,6 +15,7 @@ const EMPTY: FilterState = { grades: new Set(), longTenure: false, likelyRental:
 export function Dashboard() {
   const { zip = "78749" } = useParams();
   const nav = useNavigate();
+  const [sp, setSp] = useSearchParams();
   const { zips, parcels, loading, error } = useBundle(zip);
   const [filters, setFilters] = useState<FilterState>(EMPTY);
   const meta = zips?.find((z) => z.zip === zip);
@@ -21,6 +23,9 @@ export function Dashboard() {
 
   if (loading) return <p className="label">Loading {zip}…</p>;
   if (error || !meta || !parcels) return <p>Could not load {zip}.</p>;
+
+  const addr = sp.get("addr");
+  const selected = addr ? (parcels.find((p) => p.situs_norm === addr) ?? null) : null;
 
   return (
     <div className="dash">
@@ -44,6 +49,16 @@ export function Dashboard() {
       <FilterChips value={filters} onChange={setFilters} />
       <ProspectTable parcels={rows} onRowClick={(p) => nav(`/z/${zip}?addr=${encodeURIComponent(p.situs_norm)}`)} />
       <Disclaimer variant="compact" />
+
+      <AddressDrawer
+        parcel={selected}
+        parcels={parcels}
+        zipMeta={meta}
+        onClose={() => {
+          sp.delete("addr");
+          setSp(sp, { replace: true });
+        }}
+      />
     </div>
   );
 }
