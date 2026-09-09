@@ -1,0 +1,6 @@
+# DuckDB database files — bulk data, not source. ~282 MB.
+# /Users/justinmason is itself a git repo; without this the .duckdb file
+# shows up as a stray blob in `git status`.
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp/
