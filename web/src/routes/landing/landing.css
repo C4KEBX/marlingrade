@@ -1,5 +1,5 @@
 /* Screen 1 — Landing. Editorial marketing page, outside AppShell.
-   Tokens only. No --green (export-only). Only transform / opacity / color /
+   Tokens only. No Data-Green (export-only). Only transform / opacity / color /
    background / border-color transitions. */
 
 .lp {
@@ -47,43 +47,8 @@
   color: var(--cyan);
 }
 
-/* ---- Buttons ---------------------------------------------------------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--space) * 2.5) calc(var(--space) * 5);
-  border-radius: var(--r-ctl);
-  border: 1px solid transparent;
-  font-family: var(--font-ui);
-  font-size: var(--step-1);
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform var(--dur-1) var(--ease),
-    background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
-    border-color var(--dur-1) var(--ease);
-}
-
-.btn--cta {
-  background: var(--cyan);
-  color: var(--abyssal);
-}
-
-.btn--cta:hover {
-  transform: translateY(-1px);
-}
-
-.btn--ghost {
-  background: transparent;
-  border-color: var(--hairline);
-  color: var(--ice);
-  font-weight: 600;
-}
-
-.btn--ghost:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
+/* Button visual identity lives in web/src/styles/buttons.css.
+   Landing keeps only button POSITIONING (.lp__hero-cta, .plans__head .btn--cta). */
 
 /* ---- Hero ---------------------------------------------------------- */
 .lp__hero {

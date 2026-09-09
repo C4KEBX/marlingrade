@@ -59,41 +59,7 @@
   font-size: var(--step-0);
 }
 
-/* ---- Buttons (landing.css is not loaded on /signin or /farm) ---------- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-2);
-  color: var(--ice);
-  border: 1px solid var(--hairline);
-  border-radius: var(--r-ctl);
-  padding: calc(var(--space) * 2) calc(var(--space) * 4);
-  font-family: var(--font-ui);
-  font-size: var(--step-1);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color var(--dur-1) var(--ease),
-    border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
-}
-
-.btn:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-}
-
-.btn--cta {
-  background: var(--cyan);
-  color: var(--abyssal);
-  border-color: transparent;
-  font-weight: 700;
-}
-
-.btn--cta:hover {
-  color: var(--abyssal);
-  border-color: transparent;
-  transform: translateY(-1px);
-}
+/* Button visual identity lives in web/src/styles/buttons.css. */
 
 /* ---- Farm picker ---------------------------------------------------------- */
 .farmpicker-page {

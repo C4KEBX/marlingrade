@@ -36,6 +36,7 @@
   fill: none;
   stroke-width: 10;
   stroke-linecap: round;
+  stroke-dasharray: 0 628.32;
 }
 
 /* ---- Centred stack ---------------------------------------------------- */

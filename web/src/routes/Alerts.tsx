@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { loadAlerts, type AlertRow } from "../lib/bundle";
 import { AlertFeed } from "../components/AlertFeed";
+import { Disclaimer } from "../components/Disclaimer";
 import "./report.css";
 
 export function Alerts() {
@@ -34,6 +35,8 @@ export function Alerts() {
       ) : (
         <AlertFeed rows={alerts} />
       )}
+
+      <Disclaimer variant="compact" />
     </div>
   );
 }

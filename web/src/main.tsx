@@ -11,6 +11,7 @@ import { Alerts } from "./routes/Alerts";
 import { MonthlyReport } from "./routes/MonthlyReport";
 import "./styles/tokens.css";
 import "./styles/global.css";
+import "./styles/buttons.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },

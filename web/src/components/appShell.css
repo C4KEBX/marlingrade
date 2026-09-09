@@ -66,7 +66,15 @@
 .sidebar__item:hover { color: var(--ice); }
 .sidebar__item.is-active { color: var(--cyan); }
 
-/* Under 900px the sidebar collapses to an icon rail. */
+/* ---- Main --------------------------------------------------------------- */
+.shell__main {
+  margin-left: var(--sidebar-w);
+  padding: calc(var(--space) * 6);
+}
+
+/* Under 900px the sidebar collapses to an icon rail. Must sit AFTER the base
+   .sidebar / .shell__main rules — media queries add no specificity, so a base
+   rule declared later would otherwise win. */
 @media (max-width: 900px) {
   .sidebar {
     width: 56px;
@@ -77,12 +85,6 @@
   .shell__main {
     margin-left: 56px;
   }
-}
-
-/* ---- Main --------------------------------------------------------------- */
-.shell__main {
-  margin-left: var(--sidebar-w);
-  padding: calc(var(--space) * 6);
 }
 
 /* ---- UserBlock -------------------------------------------------------------- */

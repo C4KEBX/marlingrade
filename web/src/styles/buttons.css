@@ -1,0 +1,83 @@
+/* Canonical button system — the single source of truth for button visual
+   identity. Imported once in main.tsx, after tokens.css + global.css. Every
+   route is statically imported, so all CSS merges into one stylesheet; keeping
+   one .btn definition here removes the old collision between landing.css,
+   farmPicker.css and dashboard.css. Screen CSS keeps button POSITIONING only
+   (margin, grid placement), never colour/size/border. --green appears here and
+   nowhere else in web/src (export-only palette rule). */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--space) * 1.5);
+  background: var(--surface-2);
+  color: var(--ice);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  padding: calc(var(--space) * 2) calc(var(--space) * 4);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease);
+}
+
+/* Generic hover: border emphasis only. Deliberately does NOT flip `color` —
+   that regressed the green Export CSV label to cyan over its green background. */
+.btn:hover {
+  border-color: var(--cyan);
+}
+
+/* Primary call-to-action — prominent, as the landing + sign-in screens intend
+   (the old landing.css sizing: --step-1, 10px/20px padding). */
+.btn--cta {
+  background: var(--cyan);
+  border-color: transparent;
+  color: var(--abyssal);
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 5);
+  font-size: var(--step-1);
+  font-weight: 700;
+  transition: background-color var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+    transform var(--dur-1) var(--ease);
+}
+
+.btn--cta:hover {
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+/* Ghost — landing nav. Sized to match the CTA it sits beside. */
+.btn--ghost {
+  background: transparent;
+  border-color: var(--hairline);
+  color: var(--ice);
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 5);
+  font-size: var(--step-1);
+}
+
+.btn--ghost:hover {
+  border-color: var(--cyan);
+}
+
+/* Export CSV — Data-Green. The one sanctioned use of --green in the UI. Its
+   label stays dark-green (#062b18) at all times; immune to the generic hover. */
+.btn--export {
+  background: var(--green);
+  border-color: transparent;
+  color: #062b18;
+  padding: calc(var(--space) * 2) calc(var(--space) * 3.5);
+  font-size: var(--step-0);
+  font-weight: 700;
+}
+
+.btn--export:hover {
+  border-color: transparent;
+  filter: brightness(1.05);
+}
+
+.btn--export:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
