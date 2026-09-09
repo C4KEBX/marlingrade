@@ -26,7 +26,7 @@ _SIGNAL_LABELS = {
     "tenure_years_15plus_additional": "Tenure 15+ yrs",
     "tenure_longevity_bonus": "Tenure bonus",
     "absentee": "Absentee mailing",
-    "out_of_state_additional": "Out-of-state",
+    "out_of_state": "Out-of-state",
     "likely_rental": "Likely rental",
     "likely_rental_long_tenure": "Tired landlord",
     "senior_longtenure": "Long-tenured senior",
@@ -99,7 +99,7 @@ def compute_score_breakdown(df: pd.DataFrame, config: dict | None = None) -> tup
             * (tenure >= _TENURE_15PLUS_YEARS),
             "tenure_longevity_bonus": weights.get("tenure_bonus_per_year", 0) * tenure_years_past_15,
             "absentee": weights.get("absentee", 0) * df["absentee"],
-            "out_of_state_additional": weights["out_of_state_additional"] * df["out_of_state"],
+            "out_of_state": weights["out_of_state"] * df["out_of_state"],
             "likely_rental": weights["likely_rental"] * (df["likely_rental"] & ~is_long_tenure),
             "likely_rental_long_tenure": weights.get("likely_rental_long_tenure", weights["likely_rental"])
             * (df["likely_rental"] & is_long_tenure),

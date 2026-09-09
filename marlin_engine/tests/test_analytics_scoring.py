@@ -47,10 +47,9 @@ def test_score_is_capped_at_100() -> None:
         [
             _row(
                 tenure_years=25.0,  # 25 + 10 + 10 (longevity bonus, floor(25-15)) = 45
-                out_of_state=True,  # +10
                 senior_longtenure=True,  # +15
                 homestead_dropped=True,  # +25
-                tax_delinquent=True,  # +20  -- sums to 115, must clip to 100
+                tax_delinquent=True,  # +20  -- sums to 105, must clip to 100
             )
         ]
     )
@@ -79,7 +78,7 @@ def test_band_boundaries_match_spec_thresholds() -> None:
             _row(tenure_years=0.0),  # score 0 -> STANDARD
             _row(likely_rental=True),  # -20, floored to 0 -> STANDARD
             _row(tenure_years=10.0, senior_longtenure=True),  # 25 + 15 = 40 -> WARM
-            _row(tenure_years=20.0, senior_longtenure=True, out_of_state=True),  # 35 + 5 (longevity) + 15 + 10 = 65 -> HOT
+            _row(tenure_years=20.0, senior_longtenure=True),  # 25 + 10 + 5 (longevity) + 15 = 55 -> HOT (== hot_min)
         ]
     )
     scores, bands = compute_scores(df, _CONFIG)
@@ -281,3 +280,21 @@ def test_long_tenure_rental_score_reflects_tired_landlord_bonus() -> None:
     scores, _ = compute_scores(df, _CONFIG)
     # 25 (9+ yrs) + 10 (15+ yrs) + 5 (longevity bonus, floor(20-15)) + 5 (tired landlord) = 45
     assert scores.iloc[0] == pytest.approx(45.0)
+
+
+# --- out_of_state flipped +10 -> -10 (docs/scoring-decisions.md §1) ----------
+
+
+def test_out_of_state_now_subtracts_ten() -> None:
+    df = pd.DataFrame([_row(out_of_state=True)])
+    scores, bands, breakdown = compute_score_breakdown(df, load_scoring_config())
+    assert scores.iloc[0] == 0.0                     # clipped at 0 (-10 -> 0)
+    assert "Out-of-state:-10" in breakdown.iloc[0]
+
+
+def test_out_of_state_pulls_a_borderline_parcel_down() -> None:
+    base = pd.DataFrame([_row(tenure_years=9.0)])                 # +25 -> 25
+    oos  = pd.DataFrame([_row(tenure_years=9.0, out_of_state=True)])  # +25 -10 -> 15
+    s_base, _ = compute_scores(base, load_scoring_config())
+    s_oos, _  = compute_scores(oos, load_scoring_config())
+    assert s_base.iloc[0] - s_oos.iloc[0] == pytest.approx(10.0)

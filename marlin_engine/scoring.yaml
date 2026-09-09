@@ -15,7 +15,9 @@ weights:
   # Applies to all homes past the threshold, not just senior-exempt ones.
   tenure_bonus_per_year: 1
   absentee: 0
-  out_of_state_additional: 10
+  # Decision (docs/scoring-decisions.md §1): an out-of-state, non-homestead SFR
+  # owner is a rental-investor profile -- less motivated to sell. Was +10.
+  out_of_state: -10
   likely_rental: -20
   # Tired-landlord carve-out (competitor-gap spec, 2026-08-10, revised same
   # day per operator decision): PropStream markets a "tired landlord" list
