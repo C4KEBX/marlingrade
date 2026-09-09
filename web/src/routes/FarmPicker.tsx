@@ -15,12 +15,21 @@ const BADGE_LABEL: Record<ZipRecord["exclusivity"], string> = {
 export function FarmPicker() {
   const navigate = useNavigate();
   const [zips, setZips] = useState<ZipRecord[]>();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadZips().then(setZips);
+    let alive = true;
+    loadZips()
+      .then((z) => alive && setZips(z))
+      .catch((e) => alive && setError(String(e)));
+    return () => {
+      alive = false;
+    };
   }, []);
 
+  if (error) return <p>Could not load your farm zips.</p>;
   if (!zips) return <p className="label">Loading zips…</p>;
+  if (zips.length === 0) return <p>No monitored zips on this account yet.</p>;
 
   const ordered = [
     ...zips.filter((z) => z.zip === FOCUS_ZIP),

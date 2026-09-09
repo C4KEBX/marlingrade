@@ -2,7 +2,8 @@
    Motion is limited to color transitions; no layout-thrashing animations. */
 
 .shell {
-  min-height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ---- Header ------------------------------------------------------------- */
@@ -64,6 +65,19 @@
 
 .sidebar__item:hover { color: var(--ice); }
 .sidebar__item.is-active { color: var(--cyan); }
+
+/* Under 900px the sidebar collapses to an icon rail. */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 56px;
+  }
+  .sidebar__label {
+    display: none;
+  }
+  .shell__main {
+    margin-left: 56px;
+  }
+}
 
 /* ---- Main --------------------------------------------------------------- */
 .shell__main {

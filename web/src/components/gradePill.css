@@ -36,3 +36,27 @@
   background: var(--surface-2);
   color: var(--slate);
 }
+
+/* A / B — slow cyan pulse (spec §6.2). @keyframes are not covered by the
+   --dur-* token trick, so the reduced-motion guard below is explicit. */
+@keyframes pill-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+  }
+}
+
+.pill--a,
+.pill--b {
+  animation: pill-pulse 2s var(--ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill--a,
+  .pill--b {
+    animation: none;
+  }
+}

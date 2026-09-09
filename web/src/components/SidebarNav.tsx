@@ -12,7 +12,7 @@ export function SidebarNav() {
     <nav className="sidebar" aria-label="Primary">
       {ITEMS.map((it) => (
         <NavLink key={it.label} to={it.to} className={({ isActive }) => "sidebar__item" + (isActive ? " is-active" : "")}>
-          <span aria-hidden>{it.icon}</span> {it.label}
+          <span aria-hidden>{it.icon}</span> <span className="sidebar__label">{it.label}</span>
         </NavLink>
       ))}
     </nav>

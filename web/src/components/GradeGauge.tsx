@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useCountUp } from "../lib/useCountUp";
 import "./gradeGauge.css";
 
 export type Grade = "A" | "B" | "C" | "D" | "F";
@@ -14,6 +15,7 @@ export function GradeGauge({
 }: { grade: Grade; score: number; flags?: string[]; size?: "lg" | "sm" }) {
   const ref = useRef<SVGCircleElement>(null);
   const [on, off] = arcDashArray(score);
+  const shownScore = useCountUp(score);
   useEffect(() => {
     const el = ref.current; if (!el) return;
     el.style.transition = "none";
@@ -33,7 +35,7 @@ export function GradeGauge({
       </svg>
       <div className="gauge__center">
         <span className="gauge__letter head">{grade}</span>
-        <span className="gauge__score mono">{Math.round(score)}</span>
+        <span className="gauge__score mono">{shownScore}</span>
       </div>
       {flags.length > 0 && (
         <ul className="gauge__flags mono">
