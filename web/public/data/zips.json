@@ -1,0 +1,282 @@
+[
+  {
+    "zip": "78749",
+    "area": "Southwest Austin",
+    "subdivisions": [
+      "Village At Western Oaks",
+      "Maple Run",
+      "Legend Oaks",
+      "Circle C Ranch"
+    ],
+    "sfr_count": 10423,
+    "distribution": {
+      "A": {
+        "count": 107,
+        "pct": 1.0
+      },
+      "B": {
+        "count": 1374,
+        "pct": 13.2
+      },
+      "C": {
+        "count": 2227,
+        "pct": 21.4
+      },
+      "D": {
+        "count": 1505,
+        "pct": 14.4
+      },
+      "F": {
+        "count": 5210,
+        "pct": 50.0
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 21.1,
+      "rental_pct": 14.5,
+      "median_tenure": 9.9,
+      "out_of_state_pct": 2.7
+    },
+    "exclusivity": "available"
+  },
+  {
+    "zip": "78748",
+    "area": "Far South Austin",
+    "subdivisions": [
+      "Buckingham Estates",
+      "Tanglewood Forest",
+      "Olympic Heights",
+      "Shady Hollow"
+    ],
+    "sfr_count": 15544,
+    "distribution": {
+      "A": {
+        "count": 148,
+        "pct": 1.0
+      },
+      "B": {
+        "count": 1240,
+        "pct": 8.0
+      },
+      "C": {
+        "count": 2594,
+        "pct": 16.7
+      },
+      "D": {
+        "count": 2226,
+        "pct": 14.3
+      },
+      "F": {
+        "count": 9336,
+        "pct": 60.1
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 30.7,
+      "rental_pct": 18.8,
+      "median_tenure": 7.5,
+      "out_of_state_pct": 4.2
+    },
+    "exclusivity": "held"
+  },
+  {
+    "zip": "78745",
+    "area": "South Austin",
+    "subdivisions": [
+      "Cherry Creek",
+      "Buckingham Ridge",
+      "Shiloh",
+      "Greenwood Hills"
+    ],
+    "sfr_count": 15886,
+    "distribution": {
+      "A": {
+        "count": 565,
+        "pct": 3.6
+      },
+      "B": {
+        "count": 1665,
+        "pct": 10.5
+      },
+      "C": {
+        "count": 2686,
+        "pct": 16.9
+      },
+      "D": {
+        "count": 1796,
+        "pct": 11.3
+      },
+      "F": {
+        "count": 9174,
+        "pct": 57.7
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 38.7,
+      "rental_pct": 24.9,
+      "median_tenure": 8.0,
+      "out_of_state_pct": 4.0
+    },
+    "exclusivity": "held"
+  },
+  {
+    "zip": "78739",
+    "area": "Circle C Ranch",
+    "subdivisions": [
+      "Circle C Ranch",
+      "Hielscher",
+      "Meridian",
+      "Shady Hollow"
+    ],
+    "sfr_count": 6683,
+    "distribution": {
+      "A": {
+        "count": 24,
+        "pct": 0.4
+      },
+      "B": {
+        "count": 570,
+        "pct": 8.5
+      },
+      "C": {
+        "count": 1195,
+        "pct": 17.9
+      },
+      "D": {
+        "count": 1258,
+        "pct": 18.8
+      },
+      "F": {
+        "count": 3636,
+        "pct": 54.4
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 11.7,
+      "rental_pct": 7.7,
+      "median_tenure": 8.5,
+      "out_of_state_pct": 2.0
+    },
+    "exclusivity": "held"
+  },
+  {
+    "zip": "78735",
+    "area": "West Oak Hill",
+    "subdivisions": [
+      "Village Park At Travis Country",
+      "Barton Creek",
+      "Trailwood Village One At Travis Country",
+      "Travis Country West"
+    ],
+    "sfr_count": 4383,
+    "distribution": {
+      "A": {
+        "count": 50,
+        "pct": 1.1
+      },
+      "B": {
+        "count": 390,
+        "pct": 8.9
+      },
+      "C": {
+        "count": 722,
+        "pct": 16.5
+      },
+      "D": {
+        "count": 655,
+        "pct": 14.9
+      },
+      "F": {
+        "count": 2566,
+        "pct": 58.5
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 31.7,
+      "rental_pct": 14.6,
+      "median_tenure": 7.8,
+      "out_of_state_pct": 2.2
+    },
+    "exclusivity": "held"
+  },
+  {
+    "zip": "78736",
+    "area": "Oak Hill",
+    "subdivisions": [
+      "Windmill Run",
+      "Scenic Brook West",
+      "Valley View Acres Revised",
+      "Covered Bridge"
+    ],
+    "sfr_count": 2876,
+    "distribution": {
+      "A": {
+        "count": 96,
+        "pct": 3.3
+      },
+      "B": {
+        "count": 385,
+        "pct": 13.4
+      },
+      "C": {
+        "count": 475,
+        "pct": 16.5
+      },
+      "D": {
+        "count": 384,
+        "pct": 13.4
+      },
+      "F": {
+        "count": 1536,
+        "pct": 53.4
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 30.1,
+      "rental_pct": 16.1,
+      "median_tenure": 8.8,
+      "out_of_state_pct": 2.1
+    },
+    "exclusivity": "held"
+  },
+  {
+    "zip": "78652",
+    "area": "Manchaca",
+    "subdivisions": [
+      "Ring Tract",
+      "Onion Creek Meadows",
+      "Bear Creek Crossing",
+      "Ashbrook"
+    ],
+    "sfr_count": 1830,
+    "distribution": {
+      "A": {
+        "count": 64,
+        "pct": 3.5
+      },
+      "B": {
+        "count": 152,
+        "pct": 8.3
+      },
+      "C": {
+        "count": 194,
+        "pct": 10.6
+      },
+      "D": {
+        "count": 189,
+        "pct": 10.3
+      },
+      "F": {
+        "count": 1231,
+        "pct": 67.3
+      }
+    },
+    "aggregates": {
+      "absentee_pct": 29.9,
+      "rental_pct": 15.4,
+      "median_tenure": 6.0,
+      "out_of_state_pct": 1.8
+    },
+    "exclusivity": "held"
+  }
+]
