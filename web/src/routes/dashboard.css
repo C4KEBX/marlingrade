@@ -4,7 +4,7 @@
 .dash {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space) * 6);
+  gap: calc(var(--space) * 5);
   max-width: 1120px;
 }
 
@@ -54,8 +54,8 @@
 .dash__stats {
   display: grid;
   grid-template-columns: 1fr;
-  gap: calc(var(--space) * 5);
-  align-items: start;
+  gap: calc(var(--space) * 4);
+  align-items: stretch;
 }
 
 @media (min-width: 800px) {

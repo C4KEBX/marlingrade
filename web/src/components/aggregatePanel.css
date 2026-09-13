@@ -1,32 +1,50 @@
-/* AggregatePanel — compact zip-level stat readout. */
+/* AggregatePanel — compact, colorful stat tiles (big tabular numerals),
+   2x2 so it holds its own next to DistributionBar. Each tone sets one
+   custom property consumed by both the accent border and the numeral. */
 
 .aggpanel {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--space) * 2);
-  padding: calc(var(--space) * 4);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--space) * 2.5);
+}
+
+.aggpanel__tile {
+  padding: calc(var(--space) * 3) calc(var(--space) * 3.5);
   border: 1px solid var(--hairline);
-  border-radius: var(--r-card);
+  border-left: 3px solid var(--tile-color, var(--cyan));
+  border-radius: var(--r-ctl);
   background: var(--surface-1);
 }
 
-.aggpanel__row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: calc(var(--space) * 4);
+.aggpanel__val {
+  margin: 0;
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  color: var(--tile-color, var(--ice));
+}
+
+.aggpanel__unit {
+  margin-left: calc(var(--space));
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--slate);
 }
 
 .aggpanel__label {
+  margin-top: calc(var(--space));
+  font-family: var(--font-mono);
   font-size: var(--label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--slate);
 }
 
-.aggpanel__val {
-  margin: 0;
-  font-size: var(--step-2);
-  color: var(--ice);
-}
+.aggpanel__tile--cyan { --tile-color: var(--cyan); }
+.aggpanel__tile--info { --tile-color: var(--info); }
+.aggpanel__tile--success { --tile-color: var(--success); }
+.aggpanel__tile--warn { --tile-color: var(--warn); }

@@ -2,6 +2,8 @@ import type { ZipRecord } from "../lib/bundle";
 import "./distributionBar.css";
 
 const GRADES = ["A", "B", "C", "D", "F"] as const;
+/* Below this width a segment can't fit its own label — the legend covers it. */
+const LABEL_MIN_PCT = 9;
 
 export function DistributionBar({ dist }: { dist: ZipRecord["distribution"] }) {
   const summary = GRADES.map((g) => `${g} ${dist[g].pct}%`).join(", ");
@@ -13,7 +15,13 @@ export function DistributionBar({ dist }: { dist: ZipRecord["distribution"] }) {
             key={g}
             className={"distbar__seg distbar__seg--" + g.toLowerCase()}
             style={{ width: dist[g].pct + "%" }}
-          />
+          >
+            {dist[g].pct >= LABEL_MIN_PCT && (
+              <span className="distbar__seg-label mono">
+                {g} {dist[g].pct}%
+              </span>
+            )}
+          </span>
         ))}
       </div>
       <ul className="distbar__legend mono" aria-hidden="true">

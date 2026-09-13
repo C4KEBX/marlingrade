@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Marlin">
   <defs>
     <linearGradient id="marlinFin" x1="12" y1="6" x2="52" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00F0FF" />
-      <stop offset="1" stop-color="#1E90C8" />
+      <stop offset="0" stop-color="#46C3C4" />
+      <stop offset="1" stop-color="#2C7E8C" />
     </linearGradient>
   </defs>
   <path

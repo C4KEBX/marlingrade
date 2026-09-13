@@ -82,6 +82,7 @@ export function ProspectTable({
           )}
           {shown.map((p, i) => {
             const activate = () => onRowClick(p);
+            const accent = `var(--grade-${p.grade.toLowerCase()})`;
             return (
               <tr
                 key={p.parcel_uid}
@@ -96,13 +97,23 @@ export function ProspectTable({
                   }
                 }}
               >
-                <td className="mono ptable__rank">{i + 1}</td>
+                <td className="mono ptable__rank" style={{ borderLeftColor: accent }}>
+                  {i + 1}
+                </td>
                 <td>
                   <GradePill grade={p.grade} />
                 </td>
                 <td>{p.situs_address}</td>
                 <td className="ptable__owner">{p.owner_type}</td>
-                <td className="mono ptable__score">{Math.round(p.score)}</td>
+                <td className="ptable__score">
+                  <span className="scorebar">
+                    <span
+                      className="scorebar__fill"
+                      style={{ width: `${Math.max(0, Math.min(100, p.score))}%`, background: accent }}
+                    />
+                  </span>
+                  <span className="mono scorebar__num">{Math.round(p.score)}</span>
+                </td>
               </tr>
             );
           })}

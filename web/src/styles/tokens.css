@@ -1,24 +1,33 @@
 :root {
   color-scheme: dark;
-  --abyssal:   #0B111E;
-  --surface-1: #111828;
-  --surface-2: #0E1523;
-  --ice:       #F1F5F9;
-  --cyan:      #00F0FF;   /* Signal Cyan — interactive, A-grade, gauge ring */
-  --green:     #00E676;   /* Data Green — export/CSV & revenue ONLY */
-  --slate:     #64748B;
-  --warn:      #F2A65A;   /* amber — exclusivity-available badge, legal-trigger alerts */
-  --hairline:  rgba(241,245,249,0.10);
+  --abyssal:   #101216;   /* workspace bg — blue cast removed, near-neutral dark */
+  --surface-1: #1A1D22;   /* raised panels / cards */
+  --surface-2: #15171B;   /* sunken rows / wells */
+  --ice:       #E9E7E2;    /* primary text — warmed off-white, not clinical */
+  --cyan:      #46C3C4;   /* Signal — desaturated teal. interactive, A-grade, gauge ring */
+  --green:     #4FAE7F;   /* Data Green — export/CSV & revenue ONLY */
+  --slate:     #868683;   /* secondary text — neutral warm-gray */
+  --warn:      #E0A85C;   /* amber — exclusivity-available badge, legal-trigger alerts */
+  --hairline:  rgba(233,231,226,0.10);
 
-  --grade-a: #00F0FF;
-  --grade-b: #3FD9E4;
-  --grade-c: #64748B;
-  --grade-d: #4C596B;
-  --grade-f: #3A4453;
+  /* Grade ramp — deliberately multi-hue so a grade reads by color alone,
+     scanning a dense table. --cyan stays the separate brand/interactive
+     color; it is not reused as a grade color. */
+  --grade-a: #4A90D9;   /* blue */
+  --grade-b: #3FB873;   /* green */
+  --grade-c: #E8933D;   /* orange */
+  --grade-d: #E24C4C;   /* red */
+  --grade-f: #8B3F3F;   /* muted brick — recedes, lowest tier */
+
+  /* Status semantics — badges/alerts unrelated to a grade value. */
+  --success: #3DD9A6;
+  --danger:  #EF5B54;
+  --info:    #8FA4F2;
+  /* warning = --warn above; neutral = --slate above. */
 
   --font-head: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-ui:   'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --step-0: 13px; --step-1: 14px; --step-2: 18px; --step-3: 24px;
   --hero: clamp(2.5rem, 6vw, 4.25rem);

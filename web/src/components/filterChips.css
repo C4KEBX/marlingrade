@@ -48,8 +48,21 @@
 .chip--on {
   border-color: var(--cyan);
   color: var(--cyan);
-  background: rgba(0, 240, 255, 0.1);
+  background: rgba(70, 195, 196, 0.1);
 }
+
+/* Grade chips pick up their own hue from the --grade-* ramp when active. */
+.chip--grade.chip--on {
+  border-color: var(--chip-color);
+  color: var(--chip-color);
+  background: color-mix(in srgb, var(--chip-color) 12%, transparent);
+}
+
+.chip--a { --chip-color: var(--grade-a); }
+.chip--b { --chip-color: var(--grade-b); }
+.chip--c { --chip-color: var(--grade-c); }
+.chip--d { --chip-color: var(--grade-d); }
+.chip--f { --chip-color: var(--grade-f); }
 
 .chip:focus-visible {
   outline: 2px solid var(--cyan);

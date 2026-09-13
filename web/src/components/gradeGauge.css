@@ -90,12 +90,17 @@
 }
 
 /* ---- Grade-colour system (spec §6.2) -------------------------------- */
-/* Flash cyan for A/B, recede for C–F. */
-.gauge--a .gauge__letter { color: var(--cyan); }
+/* Letter and ring both carry the grade's own hue from the --grade-* ramp. */
+.gauge--a .gauge__letter { color: var(--grade-a); }
+.gauge--a .gauge__arc { stroke: var(--grade-a); }
 .gauge--b .gauge__letter { color: var(--grade-b); }
+.gauge--b .gauge__arc { stroke: var(--grade-b); }
 .gauge--c .gauge__letter { color: var(--grade-c); }
+.gauge--c .gauge__arc { stroke: var(--grade-c); }
 .gauge--d .gauge__letter { color: var(--grade-d); }
+.gauge--d .gauge__arc { stroke: var(--grade-d); }
 .gauge--f .gauge__letter { color: var(--grade-f); }
+.gauge--f .gauge__arc { stroke: var(--grade-f); }
 
 /* Only an A grade earns the glow. */
-.gauge--a { filter: drop-shadow(0 0 6px rgba(0, 240, 255, .5)); }
+.gauge--a { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--grade-a) 50%, transparent)); }

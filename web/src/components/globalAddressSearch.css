@@ -20,7 +20,7 @@
 .globalsearch:focus {
   outline: none;
   border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+  box-shadow: 0 0 0 3px rgba(70, 195, 196, 0.18);
 }
 
 .globalsearch__results {

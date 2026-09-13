@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import mark from "../../assets/marlin-mark.svg";
 
 type PlanTriple = [string, string, string];
 
@@ -133,64 +132,81 @@ function Cell({ value }: { value: string }) {
 
 export function PricingTable() {
   return (
-    <div className="plans__scroll">
-      <table className="plans">
-        <colgroup>
-          <col className="plans__col-label" />
-          <col />
-          <col className="plans__col-feature" />
-          <col />
-        </colgroup>
-        <thead>
-          <tr>
-            <th scope="col" className="plans__corner">
-              <img src={mark} className="plans__logo" alt="Marlin" />
-            </th>
-            {PLANS.map((plan) => (
-              <th
-                scope="col"
-                key={plan.name}
-                className={
-                  plan.popular
-                    ? "plans__head plans__head--feature"
-                    : "plans__head"
-                }
-              >
-                {plan.popular ? (
-                  <span className="plans__pop">Most popular</span>
-                ) : null}
-                <span className="head plans__name">{plan.name}</span>
-                <span className="mono plans__price">{plan.price}</span>
-                <p className="plans__desc">{plan.description}</p>
-                <Link to="/signin" className="btn btn--cta">
-                  Start
-                </Link>
+    <>
+      <div className="plans__tiers">
+        {PLANS.map((plan) => (
+          <article
+            key={plan.name}
+            className={
+              plan.popular ? "plans__tier plans__tier--popular" : "plans__tier"
+            }
+          >
+            <span className="plans__pop" aria-hidden={!plan.popular}>
+              {plan.popular ? "Most popular" : " "}
+            </span>
+            <span className="head plans__name">{plan.name}</span>
+            <span className="mono plans__price">{plan.price}</span>
+            <p className="plans__desc">{plan.description}</p>
+            <Link to="/signin" className="btn btn--cta plans__tier-cta">
+              Start
+            </Link>
+          </article>
+        ))}
+      </div>
+
+      <p className="label plans__compare-label">Compare every feature</p>
+
+      <div className="plans__scroll">
+        <table className="plans">
+          <colgroup>
+            <col className="plans__col-label" />
+            <col />
+            <col className="plans__col-feature" />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col" className="plans__corner label">
+                Plan features
               </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {PLAN_ROWS.map((group) => (
-            <Fragment key={group.group}>
-              <tr className="grp">
-                <td colSpan={4} className="label">
-                  {group.group}
-                </td>
-              </tr>
-              {group.rows.map((row) => (
-                <tr key={row.label}>
-                  <th scope="row" className="plans__rowlabel">
-                    {row.label}
-                  </th>
-                  {row.values.map((value, i) => (
-                    <Cell key={i} value={value} />
-                  ))}
-                </tr>
+              {PLANS.map((plan) => (
+                <th
+                  scope="col"
+                  key={plan.name}
+                  className={
+                    plan.popular
+                      ? "plans__head plans__head--feature"
+                      : "plans__head"
+                  }
+                >
+                  {plan.name}
+                </th>
               ))}
-            </Fragment>
-          ))}
-        </tbody>
-      </table>
-    </div>
+            </tr>
+          </thead>
+          <tbody>
+            {PLAN_ROWS.map((group) => (
+              <Fragment key={group.group}>
+                <tr className="grp">
+                  <td colSpan={4} className="label">
+                    {group.group}
+                  </td>
+                </tr>
+                {group.rows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row" className="plans__rowlabel">
+                      {row.label}
+                    </th>
+                    {row.values.map((value, i) => (
+                      <Cell key={i} value={value} />
+                    ))}
+                  </tr>
+                ))}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

@@ -5,17 +5,24 @@
 .lp {
   max-width: 1080px;
   margin: 0 auto;
-  padding: calc(var(--space) * 6) calc(var(--space) * 6)
-    calc(var(--space) * 20);
+  padding: 0 calc(var(--space) * 6) calc(var(--space) * 20);
 }
 
-/* ---- Top nav ------------------------------------------------------- */
+/* ---- Top nav (sticky) -------------------------------------------------- */
 .lp__nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: calc(var(--space) * 4);
-  padding: calc(var(--space) * 3) 0;
+  margin: 0 calc(var(--space) * -6);
+  padding: calc(var(--space) * 3) calc(var(--space) * 6);
+  background: rgba(16, 18, 22, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .lp__brand {
@@ -23,7 +30,7 @@
 }
 
 .lp__wordmark {
-  height: 24px;
+  height: 34px;
   width: auto;
   display: block;
 }
@@ -48,20 +55,63 @@
 }
 
 /* Button visual identity lives in web/src/styles/buttons.css.
-   Landing keeps only button POSITIONING (.lp__hero-cta, .plans__head .btn--cta). */
+   Landing keeps only button POSITIONING (.lp__hero-card .btn, .plans__head .btn--cta). */
 
 /* ---- Hero ---------------------------------------------------------- */
 .lp__hero {
-  padding: calc(var(--space) * 28) 0 calc(var(--space) * 20);
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  padding: clamp(calc(var(--space) * 12), 6vw, calc(var(--space) * 20)) 0
+    clamp(calc(var(--space) * 20), 9vw, calc(var(--space) * 36));
+}
+
+/* Full-bleed county-plat survey texture. Breaks out of the 1080 column to
+   fill the viewport width (body has overflow-x: clip). Layered gradients keep
+   the headline readable and fade the grid into the page above and below. */
+.lp__hero-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--abyssal);
+  background-image:
+    linear-gradient(to bottom, var(--abyssal) 0%, rgba(16, 18, 22, 0) 14%, rgba(16, 18, 22, 0) 78%, var(--abyssal) 100%),
+    radial-gradient(52% 62% at 18% 40%, rgba(16, 18, 22, 0.95), rgba(16, 18, 22, 0) 70%),
+    radial-gradient(46% 60% at 78% 34%, rgba(16, 18, 22, 0.82), rgba(16, 18, 22, 0) 72%),
+    radial-gradient(48% 70% at 88% 2%, rgba(70, 195, 196, 0.1), transparent 62%),
+    url("../../assets/hero-grid.svg");
+  background-repeat: no-repeat;
+  background-position: center, center, center, center, center bottom;
+  background-size: cover;
+}
+
+.lp__hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(calc(var(--space) * 8), 4vw, calc(var(--space) * 14));
+  align-items: center;
+}
+
+.lp__hero-copy {
+  min-width: 0;
 }
 
 .lp__hero h1 {
   margin: 0;
   font-family: var(--font-head);
-  font-size: var(--hero);
+  font-size: clamp(2.15rem, 4.6vw, 3.15rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   color: var(--ice);
 }
 
@@ -71,80 +121,178 @@
 }
 
 .lp__hero-sub {
-  max-width: 62ch;
-  margin: calc(var(--space) * 7) 0 0;
+  max-width: 44ch;
+  margin: calc(var(--space) * 6) 0 0;
   font-size: var(--step-2);
   line-height: 1.55;
   color: var(--slate);
 }
 
-.lp__hero-cta {
-  margin-top: calc(var(--space) * 8);
+/* ---- Hero auth card ---------------------------------------------------- */
+.lp__hero-card {
+  justify-self: end;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 4);
+  padding: calc(var(--space) * 7);
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-top: 2px solid var(--cyan);
+  border-radius: var(--r-card);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.7);
 }
 
-.lp__hero-hook {
-  max-width: 60ch;
-  margin: calc(var(--space) * 8) 0 0;
-  padding-left: calc(var(--space) * 4);
-  border-left: 2px solid var(--hairline);
+.lp__hero-card-kicker {
+  align-self: flex-start;
+  margin: 0;
+  padding: calc(var(--space) * 1) calc(var(--space) * 2.5);
+  border: 1px solid var(--cyan);
+  border-radius: 999px;
+  color: var(--cyan);
+  background: rgba(70, 195, 196, 0.08);
+}
+
+.lp__hero-card-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ice);
+}
+
+.lp__hero-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 2);
+}
+
+.lp__hero-card-form .label {
+  margin-bottom: calc(var(--space));
+}
+
+.lp__hero-card input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-ctl);
+  color: var(--ice);
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 3);
+  font-family: var(--font-ui);
+  font-size: var(--step-1);
+  transition: border-color var(--dur-1) var(--ease);
+}
+
+.lp__hero-card input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(70, 195, 196, 0.18);
+}
+
+.lp__hero-card .btn {
+  width: 100%;
+  margin-top: calc(var(--space) * 2);
+}
+
+.lp__hero-card-note {
+  margin: 0;
   font-size: var(--step-0);
-  line-height: 1.6;
   color: var(--slate);
 }
 
-/* ---- How it works (boxless) ------------------------------------------- */
-.lp__how {
-  padding: calc(var(--space) * 6) 0;
+@media (max-width: 920px) {
+  .lp__hero {
+    min-height: 0;
+  }
+
+  .lp__hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .lp__hero-sub {
+    max-width: 60ch;
+  }
+
+  .lp__hero-card {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .lp__hero-bg {
+    background-image:
+      linear-gradient(to bottom, var(--abyssal) 0%, rgba(16, 18, 22, 0) 30%, rgba(16, 18, 22, 0.4) 70%, var(--abyssal) 100%),
+      radial-gradient(60% 50% at 50% 42%, rgba(16, 18, 22, 0.7), rgba(16, 18, 22, 0) 75%),
+      url("../../assets/hero-grid.svg");
+    background-size: cover;
+    opacity: 0.85;
+  }
 }
 
-.lp__how h2,
-.lp__pricing h2 {
-  margin: calc(var(--space) * 2) 0 0;
-  font-size: var(--step-3);
+/* ---- How it works ---------------------------------------------------- */
+.lp__how {
+  padding: calc(var(--space) * 18) 0 calc(var(--space) * 10);
+}
+
+.lp__how-title,
+.lp__pricing-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--ice);
+  text-align: center;
 }
 
 .steps {
   display: flex;
   flex-wrap: wrap;
-  gap: calc(var(--space) * 6);
-  margin-top: calc(var(--space) * 10);
+  gap: calc(var(--space) * 10);
+  margin-top: calc(var(--space) * 14);
 }
 
 .step {
-  position: relative;
-  flex: 1 1 220px;
-  padding: calc(var(--space) * 2) calc(var(--space) * 2) calc(var(--space) * 2)
-    0;
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 calc(var(--space) * 2);
 }
 
-.step__num {
-  display: block;
-  font-size: var(--step-2);
+.step__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
   color: var(--cyan);
+  background: rgba(70, 195, 196, 0.06);
+  border: 1px solid rgba(70, 195, 196, 0.25);
+  border-radius: var(--r-card);
+}
+
+.step__icon svg {
+  width: 26px;
+  height: 26px;
 }
 
 .step__title {
-  margin: calc(var(--space) * 3) 0 calc(var(--space) * 2);
+  margin: calc(var(--space) * 5) 0 calc(var(--space) * 2);
   font-size: var(--step-2);
   color: var(--ice);
 }
 
 .step__copy {
   margin: 0;
+  max-width: 34ch;
   font-size: var(--step-1);
   line-height: 1.55;
   color: var(--slate);
-}
-
-/* arrow connectors BETWEEN steps only */
-.step + .step::before {
-  content: "\2192";
-  position: absolute;
-  top: calc(var(--space) * 2);
-  left: calc(var(--space) * -4);
-  color: var(--slate);
-  font-family: var(--font-mono);
 }
 
 /* ---- Divider ----------------------------------------------------------- */
@@ -156,15 +304,91 @@
 
 /* ---- Pricing --------------------------------------------------------- */
 .lp__pricing {
-  padding: calc(var(--space) * 4) 0;
+  padding: calc(var(--space) * 18) 0 calc(var(--space) * 4);
 }
 
 .lp__pricing-sub {
-  max-width: 64ch;
-  margin: calc(var(--space) * 4) 0 calc(var(--space) * 10);
+  max-width: 58ch;
+  margin: calc(var(--space) * 4) auto 0;
   font-size: var(--step-1);
   line-height: 1.55;
   color: var(--slate);
+  text-align: center;
+}
+
+/* Pricing tiers — standalone centred row, above the comparison grid. */
+.plans__tiers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(var(--space) * 5);
+  margin: calc(var(--space) * 12) 0 calc(var(--space) * 16);
+}
+
+.plans__tier {
+  flex: 1 1 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: calc(var(--space) * 7);
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+}
+
+.plans__tier--popular {
+  border-color: rgba(70, 195, 196, 0.4);
+  border-top: 2px solid var(--cyan);
+}
+
+.plans__pop {
+  margin: 0 0 calc(var(--space) * 3);
+  padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
+  border: 1px solid var(--cyan);
+  border-radius: 999px;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: var(--label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.plans__tier:not(.plans__tier--popular) .plans__pop {
+  visibility: hidden;
+}
+
+.plans__name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-2);
+  color: var(--ice);
+}
+
+.plans__price {
+  margin-top: calc(var(--space) * 1.5);
+  font-size: var(--step-3);
+  color: var(--cyan);
+}
+
+.plans__desc {
+  margin: calc(var(--space) * 3) 0 calc(var(--space) * 6);
+  min-height: 3em;
+  font-size: var(--step-0);
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.plans__tier-cta {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Comparison grid */
+.plans__compare-label {
+  margin: 0 0 calc(var(--space) * 4);
+  text-align: center;
 }
 
 .plans__scroll {
@@ -184,67 +408,25 @@
 
 .plans__corner {
   text-align: left;
-  vertical-align: bottom;
-  padding: calc(var(--space) * 3) calc(var(--space) * 3) calc(var(--space) * 5);
+  vertical-align: middle;
+  padding: calc(var(--space) * 3);
   border-bottom: 1px solid var(--hairline);
-}
-
-.plans__logo {
-  height: 28px;
-  width: auto;
-  display: block;
+  color: var(--slate);
 }
 
 .plans__head {
-  vertical-align: top;
-  padding: calc(var(--space) * 3) calc(var(--space) * 3) calc(var(--space) * 5);
+  vertical-align: middle;
+  padding: calc(var(--space) * 3);
   border-bottom: 1px solid var(--hairline);
-}
-
-.plans__head > * {
-  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-1);
+  color: var(--ice);
 }
 
 .plans__head--feature {
   background: var(--surface-2);
   border-top: 2px solid var(--cyan);
-}
-
-.plans__pop {
-  margin: 0 auto calc(var(--space) * 2);
-  padding: calc(var(--space) * 0.75) calc(var(--space) * 2);
-  width: max-content;
-  border: 1px solid var(--cyan);
-  border-radius: 999px;
-  color: var(--cyan);
-  font-family: var(--font-mono);
-  font-size: var(--label);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.plans__name {
-  font-size: var(--step-2);
-  color: var(--ice);
-}
-
-.plans__price {
-  margin-top: calc(var(--space));
-  font-size: var(--step-1);
-  color: var(--cyan);
-}
-
-.plans__desc {
-  margin: calc(var(--space) * 2) 0 calc(var(--space) * 4);
-  font-size: var(--step-0);
-  line-height: 1.5;
-  color: var(--slate);
-}
-
-.plans__head .btn--cta {
-  display: flex;
-  width: 100%;
-  margin-top: calc(var(--space) * 2);
 }
 
 .plans .grp td {
@@ -312,27 +494,25 @@
 /* ---- Responsive ---------------------------------------------------- */
 @media (max-width: 760px) {
   .lp {
-    padding: calc(var(--space) * 4) calc(var(--space) * 4)
-      calc(var(--space) * 16);
+    padding: 0 calc(var(--space) * 4) calc(var(--space) * 16);
+  }
+
+  .lp__nav {
+    margin: 0 calc(var(--space) * -4);
+    padding: calc(var(--space) * 3) calc(var(--space) * 4);
   }
 
   .lp__hero {
-    padding: calc(var(--space) * 16) 0 calc(var(--space) * 12);
+    padding: calc(var(--space) * 7);
+  }
+
+  .lp__hero-card {
+    padding: calc(var(--space) * 5);
   }
 
   .steps {
     flex-direction: column;
-    gap: calc(var(--space) * 8);
-  }
-
-  .step {
-    padding: 0;
-  }
-
-  .step + .step::before {
-    content: "\2193";
-    top: calc(var(--space) * -6);
-    left: 0;
+    gap: calc(var(--space) * 12);
   }
 
   .section-divider {

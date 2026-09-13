@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" fill="none" preserveAspectRatio="xMidYMax slice" role="presentation">
+  <g stroke="#46C3C4" font-family="ui-monospace, 'JetBrains Mono', monospace">
+    <!-- topographic contour lines -->
+    <g stroke-opacity="0.07" stroke-width="1.5" fill="none">
+      <path d="M-60 70 C 260 20 520 130 820 85 S 1320 15 1660 85" />
+      <path d="M-60 360 C 300 300 600 440 900 380 S 1380 290 1660 380" />
+      <path d="M-60 520 C 320 470 620 590 940 530 S 1400 450 1660 530" />
+    </g>
+
+    <!-- parcel survey grid (dashed) — spans the full width -->
+    <g stroke-opacity="0.2" stroke-width="1.4" stroke-dasharray="6 9">
+      <path d="M170 -20 L170 660" /><path d="M470 -20 L470 660" />
+      <path d="M800 -20 L800 660" /><path d="M1030 -20 L1030 660" />
+      <path d="M1290 -20 L1290 660" /><path d="M1510 -20 L1510 660" />
+      <path d="M-20 110 L1620 110" /><path d="M-20 400 L1620 400" />
+      <path d="M-20 540 L1620 540" />
+    </g>
+
+    <!-- intersection nodes -->
+    <g fill="#46C3C4" fill-opacity="0.36" stroke="none">
+      <circle cx="170" cy="110" r="3" /><circle cx="470" cy="110" r="3" />
+      <circle cx="800" cy="110" r="3" /><circle cx="1030" cy="110" r="3" />
+      <circle cx="1510" cy="110" r="3" /><circle cx="170" cy="400" r="3" />
+      <circle cx="470" cy="540" r="3" /><circle cx="800" cy="400" r="3" />
+      <circle cx="1030" cy="540" r="3" /><circle cx="1290" cy="400" r="3" />
+      <circle cx="1510" cy="540" r="3" /><circle cx="1290" cy="540" r="3" />
+    </g>
+
+    <!-- focus parcel — bottom band, clear of the copy and the auth card -->
+    <rect x="470" y="452" width="330" height="120"
+      fill="#46C3C4" fill-opacity="0.08" stroke-opacity="0.65" stroke-width="1.9" />
+    <g stroke="#46C3C4" stroke-opacity="0.8" stroke-width="1.6" fill="none">
+      <circle cx="470" cy="452" r="4.5" /><circle cx="800" cy="452" r="4.5" />
+      <circle cx="470" cy="572" r="4.5" /><circle cx="800" cy="572" r="4.5" />
+    </g>
+
+    <!-- crosshair ticks -->
+    <g stroke-opacity="0.28" stroke-width="1.4">
+      <path d="M320 150 h18 M329 141 v18" />
+      <path d="M1090 140 h18 M1099 131 v18" />
+      <path d="M1450 430 h18 M1459 421 v18" />
+      <path d="M250 440 h18 M259 431 v18" />
+    </g>
+
+    <!-- coordinate + parcel labels — kept in the bottom band and the edges -->
+    <g fill="#46C3C4" stroke="none" font-size="13.5" letter-spacing="1.6">
+      <text x="486" y="442" fill-opacity="0.6">TR 046 &#183; 0.28 AC</text>
+      <text x="820" y="464" fill-opacity="0.52">GRADE A</text>
+      <text x="1046" y="595" fill-opacity="0.3">TR 048</text>
+      <text x="1306" y="420" fill-opacity="0.32">TR 052</text>
+      <text x="196" y="420" fill-opacity="0.3">TR 039</text>
+      <text x="196" y="595" fill-opacity="0.36">N 30&#176;14&#8242;27&#8243; W &#183; ZIP 78749</text>
+      <text x="1046" y="95" fill-opacity="0.28">SEC. 17 &#183; TRAVIS CO</text>
+    </g>
+  </g>
+</svg>

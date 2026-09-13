@@ -60,7 +60,7 @@ export function FilterChips({
           <button
             key={g}
             type="button"
-            className={"chip chip--grade" + (on ? " chip--on" : "")}
+            className={"chip chip--grade chip--" + g.toLowerCase() + (on ? " chip--on" : "")}
             aria-pressed={on}
             onClick={() => toggleGrade(g)}
           >

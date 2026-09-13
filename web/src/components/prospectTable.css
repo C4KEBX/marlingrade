@@ -49,7 +49,7 @@
 }
 
 .ptable td {
-  padding: calc(var(--space) * 2.5) calc(var(--space) * 3);
+  padding: calc(var(--space) * 2) calc(var(--space) * 3);
   border-bottom: 1px solid var(--hairline);
 }
 
@@ -70,6 +70,7 @@
 .ptable__rank {
   color: var(--slate);
   width: 1%;
+  border-left: 3px solid transparent; /* colored per-row via inline style — grade accent */
 }
 
 .ptable__owner {
@@ -78,7 +79,32 @@
 }
 
 .ptable__score {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space) * 2.5);
+  min-width: 120px;
+}
+
+.scorebar {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.scorebar__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.scorebar__num {
+  width: 2.5ch;
+  text-align: right;
   color: var(--ice);
+  font-variant-numeric: tabular-nums;
 }
 
 .ptable__empty {
